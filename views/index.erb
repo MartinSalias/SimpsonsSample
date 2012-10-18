@@ -1,0 +1,10 @@
+<h2><%= @title %></h2>
+<% @family.each do |person| %>
+  <article>
+    <p>
+      <a href="/<%= person.id %>"><img src="/images/<%= person.id %>.png"/></a>
+      &nbsp;
+      <a href="/<%= person.id %>"><%= person.name %></a>
+    </p>
+  </article>
+<% end %>

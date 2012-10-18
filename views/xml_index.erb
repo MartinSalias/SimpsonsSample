@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<simpsons type="array">
+<% @family.each_with_index do |person,index| %>
+  <simpson>
+    <id type="integer"><%= person.id %></id>
+    <name><%= person.name %></name>
+    <uri><%= @base_host %><%= person.id %></uri>
+    <dad_uri><%= @base_host %><%= person.dad_id %></dad_uri>
+    <mom_uri><%= @base_host %><%= person.mom_id %></mom_uri>
+  </simpson>
+<% end %>
+</simpsons>

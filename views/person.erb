@@ -1,0 +1,28 @@
+<% if @person %>  
+
+    <p>
+      <a href="/<%= @person.id %>"><img src="/images/<%= @person.id %>.png"/></a>
+      &nbsp;
+      <a href="/<%= @person.id %>"><%= @person.name %></a>
+    </p>
+
+    <hr/>
+    
+    <% if @dad %>
+		<p>Dad:<br/>
+	      <a href="/<%= @dad.id %>"><img src="/images/<%= @dad.id %>.png"/></a>
+	      &nbsp;
+	      <a href="/<%= @dad.id %>"><%= @dad.name %></a>
+		</p>
+	<% end %>
+    <% if @mom %>
+		<p>Mom:<br/>
+	      <a href="/<%= @mom.id %>"><img src="/images/<%= @mom.id %>.png"/></a>
+	      &nbsp;
+	      <a href="/<%= @mom.id %>"><%= @mom.name %></a>
+		</p>
+	<% end %>
+
+<% else %> 
+  <p>There is no Simpson like that...</p>  
+<% end %> 
