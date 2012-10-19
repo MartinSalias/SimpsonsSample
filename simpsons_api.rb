@@ -1,10 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
-require 'slim'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/simpsons.db")
-
-$base_host = ""
 
 class Simpson
   include DataMapper::Resource
@@ -12,21 +9,11 @@ class Simpson
   property :name,    String, :required => true
   property :dad_id,	 Integer
   property :mom_id,	 Integer
-
-  def as_json(options = {})
-    {
-      id:   self.id, 
-      name: self.name,
-      uri:  $base_host+self.id.to_s
-    }
-  end
 end
 DataMapper.finalize
 
 
-
 get '/' do
-  $base_host = request.host_with_port + request.path_info
   @base_host = request.host_with_port + request.path_info
   @family = Simpson.all
   
@@ -52,9 +39,9 @@ end
 
 get '/:person' do
   @person = Simpson.get params[:person]
-  @title = @person.name
 
   if @person
+    @title = @person.name
     @dad = Simpson.get @person.dad_id 
     @mom = Simpson.get @person.mom_id 
 
