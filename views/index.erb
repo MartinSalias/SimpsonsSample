@@ -2,9 +2,10 @@
 <% @family.each do |person| %>
   <article>
     <p>
-      <a href="/<%= person.id %>"><img src="/images/<%= person.id %>.png"/></a>
+      <a href="<%= entity_uri(person.id) %>">
+        <img src="/images/<%= person.id %>.png"/></a>
       &nbsp;
-      <a href="/<%= person.id %>"><%= person.name %></a>
+      <a href="<%= entity_uri(person.id) %>"><%= person.name %></a>
     </p>
   </article>
 <% end %>

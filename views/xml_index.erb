@@ -4,9 +4,9 @@
   <simpson>
     <id type="integer"><%= person.id %></id>
     <name><%= person.name %></name>
-    <uri><%= @base_host %><%= person.id %></uri>
-    <dad_uri><%= @base_host %><%= person.dad_id %></dad_uri>
-    <mom_uri><%= @base_host %><%= person.mom_id %></mom_uri>
+    <uri><%= entity_uri(person.id) %></uri>
+    <dad_uri><%= entity_uri(person.dad_id) %></dad_uri>
+    <mom_uri><%= entity_uri(person.mom_id) %></mom_uri>
   </simpson>
 <% end %>
 </simpsons>

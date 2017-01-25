@@ -1,28 +1,28 @@
-<% if @person %>  
+<% if @person %>
 
     <p>
-      <a href="/<%= @person.id %>"><img src="/images/<%= @person.id %>.png"/></a>
+      <a href="<%= entity_uri(@person.id) %>"><img src="/images/<%= @person.id %>.png"/></a>
       &nbsp;
-      <a href="/<%= @person.id %>"><%= @person.name %></a>
+      <a href="/<%= entity_uri(@person.id) %>"><%= @person.name %></a>
     </p>
 
     <hr/>
-    
+
     <% if @dad %>
 		<p>Dad:<br/>
-	      <a href="/<%= @dad.id %>"><img src="/images/<%= @dad.id %>.png"/></a>
+	      <a href="<%= entity_uri(@dad.id) %>"><img src="/images/<%= @dad.id %>.png"/></a>
 	      &nbsp;
-	      <a href="/<%= @dad.id %>"><%= @dad.name %></a>
+	      <a href="<%= entity_uri(@dad.id) %>"><%= @dad.name %></a>
 		</p>
 	<% end %>
     <% if @mom %>
 		<p>Mom:<br/>
-	      <a href="/<%= @mom.id %>"><img src="/images/<%= @mom.id %>.png"/></a>
+	      <a href="/<%= entity_uri(@mom.id) %>"><img src="/images/<%= @mom.id %>.png"/></a>
 	      &nbsp;
-	      <a href="/<%= @mom.id %>"><%= @mom.name %></a>
+	      <a href="/<%= entity_uri(@mom.id) %>"><%= @mom.name %></a>
 		</p>
 	<% end %>
 
-<% else %> 
-  <p>There is no Simpson like that...</p>  
-<% end %> 
+<% else %>
+  <p>There is no Simpson like that...</p>
+<% end %>

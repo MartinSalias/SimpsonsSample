@@ -12,19 +12,22 @@ class Simpson
 end
 DataMapper.finalize
 
+helpers do
+  def entity_uri( entity )
+    "/api/simpsons/#{entity}"
+  end
+end
 
 get '/' do
-  @base_host = request.host_with_port + request.path_info
+  redirect to '/api/simpsons/'
+end
+
+get '/api/simpsons/' do
   @family = Simpson.all
-  
+
   request.accept.each do |type|
       case type
-        when 'text/html'
-          @title = "The whole clan"
-          halt erb :index
-
         when 'application/json', 'text/json'
-
 #          halt @family.to_json
           halt erb :json_index, :layout => false
 
@@ -32,22 +35,22 @@ get '/' do
 #          halt @family.to_xml
           halt erb :xml_index, :layout => false
 
+        else
+          @title = "The whole clan"
+          halt erb :index
       end
     end
     error 406
 end
 
-get '/:person' do
+get '/api/simpsons/:person' do
   @person = Simpson.get params[:person]
 
   if @person
     @title = @person.name
-    @dad = Simpson.get @person.dad_id 
-    @mom = Simpson.get @person.mom_id 
+    @dad = Simpson.get @person.dad_id
+    @mom = Simpson.get @person.mom_id
 
     erb :person
   end
 end
-
-
-

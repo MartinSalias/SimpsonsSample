@@ -1,10 +1,10 @@
 [
 <% @family.each_with_index do |person,index| %>{
- "id": <%= person.id %>, 
- "name": "<%= person.name %>", 
- "uri": "<%= @base_host %><%= person.id %>", 
- "dad_uri": "<%= @base_host %><%= person.dad_id %>", 
- "mom_uri": "<%= @base_host %><%= person.mom_id %>"
+ "id": <%= person.id %>,
+ "name": "<%= person.name %>",
+ "uri": "<%= entity_uri(person.id) %>",
+ "dad_uri": "<%= entity_uri(person.dad_id) %>",
+ "mom_uri": "<%= entity_uri(person.mom_id) %>"
 }<%="," if index != @family.length - 1 %>
 <% end %>
 ]
